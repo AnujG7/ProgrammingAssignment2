@@ -1,7 +1,9 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## makeCacheMatrix returns a specia matrix with a list of getter and setters.
+## It returns a list with 4 functions; get, set,setInverse and getInverse.
+## Purpose is to cache the matrix's inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
 MyInvMat <<- NULL
@@ -18,7 +20,10 @@ list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
 
-## Write a short comment describing this function
+## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above
+## If the inverse has already been calculated (and the matrix has not changed), 
+## then the cachesolve should retrieve the inverse from the cache.
+## else, it calculates the inverse usiong solve internal function.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
