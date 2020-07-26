@@ -11,9 +11,9 @@ set <- function(y){
 }
 get <- function() x
 setInverse <- function(inverse) MyInvMat <<- inverse
-getInverse <- function() y
+getInverse <- function() MyInvMat
 
-list(set = set, get = get, setInverse = setInverse, get = getInverse)
+list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 
 }
 
@@ -22,4 +22,15 @@ list(set = set, get = get, setInverse = setInverse, get = getInverse)
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+  y <<- x
+  MyInvMat <- x$getInverse()
+  if(!is.null(MyInvMat)){
+    message("cached output")
+    return(MyInvMat)
+  }
+  Mydata <- x$get()
+  MyInvMat <- solve(Mydata)
+  x$setInverse(MyInvMat)
+  MyInvMat
+  
 }
